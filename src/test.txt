@@ -1,0 +1,9 @@
+app-co-material is for component outlet dynamically adding the dom and angular material 
+app-element to add angular component as element or component
+app-googlemap angular google map
+app-ng6 angular 6 project
+
+
+
+
+

@@ -1,0 +1,128 @@
+<form [formGroup]="POForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+      <label>Manufacturer Name</label>
+      <mat-form-field>
+        <input type="text" matInput  formControlName="manufacturerName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.manufacturerName.errors }" />
+        <div *ngIf="submitted && f.manufacturerName.errors" class="invalid-feedback">
+            <div *ngIf="f.manufacturerName.errors.required">Manufacturer Name is required</div>
+            <div *ngIf="f.manufacturerName.errors?.pattern">Manufacturer Name Cannot Have Special Characters</div>
+        </div>
+      </mat-form-field>
+  </div>
+  <div class="form-group">
+      <label>Order ID</label>
+      <mat-form-field>
+        <input type="number" matInput formControlName="orderid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderid.errors }" />
+        <div *ngIf="submitted && f.orderid.errors" class="invalid-feedback">
+            <div *ngIf="f.orderid.errors.required">Order ID is required</div>
+        </div>
+      </mat-form-field>
+  </div>
+  <div class="form-group">
+      <label>PO Number</label>
+      <mat-form-field>
+        <input type="number" matInput formControlName="poNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.poNumber.errors }" />
+        <div *ngIf="submitted && f.poNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.poNumber.errors.required">PO Number is required</div>
+        </div>
+      </mat-form-field>
+  </div>
+  <div class="form-group" >
+    <label>Date of Creation</label>
+    <mat-form-field>
+        <input matInput formControlName="createDate"     matInput [matDatepicker]="createDate" 
+        placeholder="Choose a date" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.createDate.errors }">
+        <mat-datepicker-toggle  matSuffix [for]="createDate"></mat-datepicker-toggle>
+        <mat-datepicker  color="accent"  #createDate></mat-datepicker>
+        <div *ngIf="submitted && f.createDate.errors" class="invalid-feedback">
+            <div *ngIf="f.createDate.errors.required">Date is required</div>
+        </div>
+    </mat-form-field>
+  </div>
+  <div class="form-group" >
+    <label>Date of Issue</label>
+    <mat-form-field>
+        <input matInput formControlName="issueDate"     matInput [matDatepicker]="issueDate" 
+        placeholder="Choose a date" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.issueDate.errors }">
+        <mat-datepicker-toggle  matSuffix [for]="issueDate"></mat-datepicker-toggle>
+        <mat-datepicker  color="accent"  #issueDate></mat-datepicker>
+        <div *ngIf="submitted && f.issueDate.errors" class="invalid-feedback">
+            <div *ngIf="f.issueDate.errors.required">Date is required</div>
+        </div>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <label>Supplier Name</label>
+    <mat-form-field>
+      <input matInput type="text" formControlName="supplierName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.supplierName.errors }" />
+      <div *ngIf="submitted && f.supplierName.errors" class="invalid-feedback">
+          <div *ngIf="f.supplierName.errors.required">Supplier Name is required</div>
+          <div *ngIf="f.supplierName.errors?.pattern">Supplier Name Cannot Have Special Characters</div>
+      </div>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+      <label>Email</label>
+      <input matInput type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label>Password</label>
+      <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+  </div>
+  <div class="form-group" >
+    <label class="col-md-2 control-label">Send Notifications</label>
+    <div class="col-md-8">
+      <label class="radio-inline">
+        <input type="radio"
+  
+               value="email"
+  
+               formControlName = "notification">Email
+      </label>
+      <label class="radio-inline">
+        <input type="radio"
+  
+               value="phone"
+  
+               formControlName = "notification">Phone
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+      <label>Description</label>
+      <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">Description is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label>Description</label>
+      <input type="checkbox" formControlName="chk" class="form-control"  />
+  </div>
+  <div class="form-group" *ngIf="datetwochk">
+    <label>Select First Date</label>
+    <mat-form-field>
+        <input formControlName="datepickertwochk" (dateChange)="setformat1($event);"   (dateInput)="setformat1($event);"  
+        matInput [matDatepicker]="datepickertwochk" placeholder="Choose a date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.datepickertwochk.errors }">
+        <mat-datepicker-toggle  matSuffix [for]="datepickertwochk"></mat-datepicker-toggle>
+        <mat-datepicker  color="accent"  #datepickertwochk></mat-datepicker>
+        <div *ngIf="submitted && f.datepickertwochk.errors" class="invalid-feedback">
+            <div *ngIf="f.datepickertwochk.errors.required">Since Checked Date is required</div>
+        </div>
+        </mat-form-field>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary">Register</button>
+    <!--button [disabled]="registerForm.invalid" class="btn btn-primary">Register</button-->
+</div>
+</form>
