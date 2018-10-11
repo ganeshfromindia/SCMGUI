@@ -16,6 +16,7 @@ import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 
 import { ApiModule  } from './api/api.module';
+import { PoComponent } from './pages/po/po.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ApiModule  } from './api/api.module';
     RadiobuttonComponent,
     CheckboxComponent,
     DynamicFieldDirective,
-    DynamicFormComponent
+    DynamicFormComponent,
+    PoComponent
   ],
   imports: [
     BrowserModule,
