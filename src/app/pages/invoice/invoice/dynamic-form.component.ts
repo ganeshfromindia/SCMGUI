@@ -103,7 +103,7 @@ export class DynamicFormComponentInvoice implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.createControl(this.listAddres[0]);
+    this.form = this.createControl(this.listAddres[0]);
     //this.form.setControl('ProductDetails', this.fb.array((this.listAddres || []).map((x) => this.fb.group(x))));
   }
 
@@ -119,26 +119,42 @@ export class DynamicFormComponentInvoice implements OnInit {
     }
   }
 
+  // createControl(adresse: Adresse) {
+  //   this.form = this.fb.group({
+  //     nameOfSupplier:new FormControl(),
+  //     invoiceDate:new FormControl(),
+  //     invoiceNumber:new FormControl(),
+  //     manufacturer:new FormControl(),
+  //     manufacturersAddress:new FormControl(),
+  //     poNumber:new FormControl(),
+  //     poDate:new FormControl(),
+  //     challanNumber:new FormControl(),
+  //     challanDate:new FormControl(),
+  //     ProductDetails: this.fb.array([this.createForms(adresse)]),    
+  //     preparedBy:new FormControl(),
+  //     designation:new FormControl(),
+  //     status:new FormControl(),
+  //   });
+  //   return this.form;
+  // }
+
+ 
   createControl(adresse: Adresse) {
-    this.form = this.fb.group({
-      nameOfSupplier:new FormControl(),
-      invoiceDate:new FormControl(),
-      invoiceNumber:new FormControl(),
-      manufacturer:new FormControl(),
-      manufacturersAddress:new FormControl(),
-      poNumber:new FormControl(),
-      poDate:new FormControl(),
-      challanNumber:new FormControl(),
-      challanDate:new FormControl(),
-      ProductDetails: this.fb.array([this.createForms(adresse)]),    
-      preparedBy:new FormControl(),
-      designation:new FormControl(),
-      status:new FormControl(),
+    const group = this.fb.group({ProductDetails: this.fb.array([this.createForms(adresse)])});
+    this.ProductDetails = this.fb.array([this.createForms(adresse)]),    
+    this.fields.forEach(field => {
+      if (field.type === "button") return;
+      const control = this.fb.control(
+        field.value,
+        this.bindValidations(field.validations || [])
+      );
+      group.addControl(field.name, control);
     });
-    return this.form;
+    return group;
   }
 
-  
+
+
   createForms(adresse): FormGroup {
     return this.fb.group({
             particularsOfGoodsService: new FormControl(adresse.particularsOfGoodsService),
