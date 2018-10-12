@@ -1,6 +1,6 @@
-export * from './apiResponse';
-export * from './errorResponse';
+export { ApiResponse as ApiResponsePO} from './apiResponse';
+export { ErrorResponse as ErrorResponsePO} from './errorResponse';
 export * from './poCondition';
-export * from './productDetails';
+export { ProductDetails as ProductDetailsPO} from './productDetails';
 export * from './purchaseOrder';
 export * from './updatePurchaseOrder';

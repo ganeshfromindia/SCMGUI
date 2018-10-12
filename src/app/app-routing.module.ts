@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PoComponent } from './pages/po/po.component';
-import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { InvoiceComponent } from './pages/invoice/invoice/invoice.component';
 
 
 const routes: Routes = [

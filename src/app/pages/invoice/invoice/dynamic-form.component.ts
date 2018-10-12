@@ -13,7 +13,7 @@ import {
   FormControl,
   FormArray
 } from "@angular/forms";
-import { FieldConfig, Validator } from "../../field.interface";
+import { FieldConfig, Validator } from "../../../field.interface";
 
 export class Adresse {
   particularsOfGoodsService: string;

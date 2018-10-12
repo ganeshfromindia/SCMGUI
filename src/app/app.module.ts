@@ -15,13 +15,14 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 import { DynamicFormComponentPO   } from "./pages/po/dynamic-form.component";
-import { DynamicFormComponentInvoice  } from "./pages/invoice/dynamic-form.component";
+import { DynamicFormComponentInvoice  } from "./pages/invoice/invoice/dynamic-form.component";
 
 import { ApiModule  } from './api/api.module';
+import { PurchaseOrderService  } from './api/';
 import { PoComponent } from './pages/po/po.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { InvoiceComponent } from './pages/invoice/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
     ApiModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PurchaseOrderService],
   bootstrap: [AppComponent],
   entryComponents: [
     InputComponent,

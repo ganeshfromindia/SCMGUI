@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { Validators } from "@angular/forms";
-import { FieldConfig } from "../../field.interface";
+import { FieldConfig } from "../../../field.interface";
 import { DynamicFormComponentInvoice } from "./dynamic-form.component";
 
 
@@ -183,7 +183,7 @@ export class InvoiceComponent implements OnInit {
   submit(value: any) {
     var toLocaleInvoiceString = value.invoiceDate.toLocaleString();
     var toLocalePOString = value.poDate.toLocaleString();
-    var toLocaleChallanString = value.challanDate.toLocaleDateString();
+    var toLocaleChallanString = value.challanDate.toLocaleString();
     // var localeCreatedDateString = localeCreatedDate.toLocaleString();
     // value.createDate = localeCreatedDateString;
     // var localeIssueDate = value.issueDate.toDate();
