@@ -41,6 +41,9 @@ export class Adresse {
           <div *ngFor="let itemrow of adresses.controls; let i=index" >
             <div [formGroupName]="i">
               <input type="text" placeholder="Particulars" name="particularsOfGoodsService" formControlName="particularsOfGoodsService">
+              <div *ngIf="itemrow.controls.particularsOfGoodsService.dirty">
+                <div *ngIf="itemrow.hasError('required', 'particularsOfGoodsService')">Particulars are required</div>              
+              </div>
               <input type="number" placeholder="Quanity" name="quantity" formControlName="quantity"> 
               <input type="text"  placeholder="Unit" name="unit" formControlName="unit"> 
               <input type="number" placeholder="Unit Price" name="unitPrice" formControlName="unitPrice"> 
@@ -157,7 +160,7 @@ export class DynamicFormComponentInvoice implements OnInit {
 
   createForms(adresse): FormGroup {
     return this.fb.group({
-            particularsOfGoodsService: new FormControl(adresse.particularsOfGoodsService),
+            particularsOfGoodsService: ['', Validators.required],
             quantity: new FormControl(adresse.quantity ),
             unit: new FormControl(adresse.unit ),
             unitPrice: new FormControl(adresse.unitPrice ),
