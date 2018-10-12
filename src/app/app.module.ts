@@ -14,10 +14,14 @@ import { RadiobuttonComponent } from "./components/radiobutton/radiobutton.compo
 import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
+import { DynamicFormComponentPO   } from "./pages/po/dynamic-form.component";
+import { DynamicFormComponentInvoice  } from "./pages/invoice/dynamic-form.component";
 
 import { ApiModule  } from './api/api.module';
 import { PoComponent } from './pages/po/po.component';
 
+import { AppRoutingModule } from './app-routing.module';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { PoComponent } from './pages/po/po.component';
     CheckboxComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
-    PoComponent
+    DynamicFormComponentPO,
+    DynamicFormComponentInvoice,
+    PoComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import { PoComponent } from './pages/po/po.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    ApiModule
+    ApiModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

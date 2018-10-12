@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Configuration } from './configuration';
 
-import { PurchaseOrderService } from './po/api/purchaseOrder.service';
+import { PurchaseOrderService } from './po/api/api';
+import { InvoiceService, InvoicePaymentService } from './invoice/api/api';
 
 @NgModule({
   imports:      [ CommonModule, HttpClientModule ],
   declarations: [],
   exports:      [],
   providers: [
-    PurchaseOrderService ]
+    PurchaseOrderService,
+    InvoiceService,
+    InvoicePaymentService
+]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

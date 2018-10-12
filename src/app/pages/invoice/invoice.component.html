@@ -4,9 +4,12 @@
       Registration Form
     </h1>
   </div>
-  <dynamic-form-po [fields]="regConfig" (submit)="submit($event)">
-  </dynamic-form-po>
+  <dynamic-form-invoice [fields]="regConfig" (submit)="submit($event)">
+  </dynamic-form-invoice>
   <div class="margin-top">
     {{ form.value | json }}
   </div>
 </div>
+
+
+
